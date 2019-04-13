@@ -9,72 +9,71 @@
     <link rel="icon" type="img/png" href="./css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
-        <!-- Firebase Link -->
-<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <!-- Firebase Link -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
 
 </head>
 
-<body background="./css/images/option3.jpg">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="./css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png" width="65"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="../home.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign up with us</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Search Events by Genre
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Sports</a>
-                        <a class="dropdown-item" href="#">Concerts</a>
-                        <a class="dropdown-item" href="#">Indoor/Outdoor</a>
-                        <a class="dropdown-item" href="#">Family Friendly</a>
-                        <a class="dropdown-item" href="#">Movies</a>
-                        <a class="dropdown-item" href="#">Clubs/Bars</a>
-                        <a class="dropdown-item" href="#">Restaurants</a>
-                    </div>
-                </li>
-            </ul>
 
-    
-        </div>
-    </nav><br><br>
-    <div class="container">
-        <h4>Stay in contact with us!</h4><br>
-        <div class="card">
-            <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Name</label>
-                        <input type="email" class="form-control" id="name-input" placeholder="John Smith">
+<body background="./css/images/option3.jpg">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <a class="navbar-brand" href="#"><img
+                                    src="./css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png"
+                                    class="img-responsive logo"></a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sign up with us</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Search Events by Genre
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Sports</a>
+                                    <a class="dropdown-item" href="#">Concerts</a>
+                                    <a class="dropdown-item" href="#">Indoor/Outdoor</a>
+                                    <a class="dropdown-item" href="#">Family Friendly</a>
+                                    <a class="dropdown-item" href="#">Movies</a>
+                                    <a class="dropdown-item" href="#">Clubs/Bars</a>
+                                    <a class="dropdown-item" href="#">Restaurants</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Email address</label>
-                        <input type="email" class="form-control" id="email-input"
-                            placeholder="name@example.com">
+                </nav>
+
+            <div class="container">
+                <h4>Stay in contact with us!</h4><br>
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Name</label>
+                                <input type="email" class="form-control" id="name-input" placeholder="John Smith">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Email address</label>
+                                <input type="email" class="form-control" id="email-input"
+                                    placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Message</label>
+                                <textarea class="form-control" id="message-input" rows="12"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-secondary" id="contact-submit-btn">Submit</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Message</label>
-                        <textarea class="form-control" id="message-input" rows="12"></textarea>
-                    </div>
-                    <button type="button" class="btn btn-secondary" id="contact-submit-btn">Submit</button>
-                </form>
+                </div>
+            </div><br><br>
+            <div class="card-footer">
+                © 2019 Debug Entity
             </div>
-        </div>
-    </div><br><br>
-    <div class="card-footer">
-        © 2019 Debug Entity
-    </div>
+
 
 
 
