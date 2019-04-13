@@ -8,7 +8,7 @@ var config = {
   messagingSenderId: "392746248806"
 };
 firebase.initializeApp(config);
-
+var myLocation = ""
 var database = firebase.database();
 // API URLS (can move them into functions if desired)
 var foursquareUrl =
@@ -28,6 +28,7 @@ $("#location-search").on("click", function (event) {
   console.log("Clicked...");
 
   event.preventDefault();
+
   var myLocation = $("#the-real-location").val().trim();
 
   console.log(myLocation);
@@ -37,8 +38,6 @@ $("#location-search").on("click", function (event) {
 
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
-
-  
 
 });
 
@@ -50,6 +49,18 @@ function ajaxCall(url) {
     method: "GET"
   }).then(function (response) {
     console.log("test");
+    //after the response comes back use it to set a global variable that 
+    //can then be used by eventDisplay()
     console.log(response);
+    $("#event-display").empty();
+    for (var i = 0; i < 3; i++) {
+    var t = $("<tr>");
+    var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+    t.append(eventImg);
+    t.append($("<td>").text(response.events[i].summary));
+    $("#event-display").prepend(t);
+    };
   });
+
 }
+
