@@ -14,170 +14,163 @@
 
 </head>
 
-<body>
-    <div class="slider">
-        <div class="load">
-            <div class="header">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav mr-auto">
-                            <a class="navbar-brand" href="#"><img
-                                    src="./assets/css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png"
-                                    class="img-responsive logo"></a>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./assets/search.html">Sign up with us</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Search Events by Genre
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Sports</a>
-                                    <a class="dropdown-item" href="#">Concerts</a>
-                                    <a class="dropdown-item" href="#">Indoor/Outdoor</a>
-                                    <a class="dropdown-item" href="#">Family Friendly</a>
-                                    <a class="dropdown-item" href="#">Movies</a>
-                                    <a class="dropdown-item" href="#">Clubs/Bars</a>
-                                    <a class="dropdown-item" href="#">Restaurants</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <span class="navbar-text">
-                        </span>
-                    </div>
-                </nav>
-            </div><br>
-            <div class="container">
-                <form class="form">
+<body class="slider">
+    <div class="load">
+        <div class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <a class="navbar-brand" href="#"><img
+                                src="./assets/css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png"
+                                class="img-responsive logo"></a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./assets/search.html">Sign up with us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Search Events by Genre
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Sports</a>
+                                <a class="dropdown-item" href="#">Concerts</a>
+                                <a class="dropdown-item" href="#">Indoor/Outdoor</a>
+                                <a class="dropdown-item" href="#">Family Friendly</a>
+                                <a class="dropdown-item" href="#">Movies</a>
+                                <a class="dropdown-item" href="#">Clubs/Bars</a>
+                                <a class="dropdown-item" href="#">Restaurants</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <span class="navbar-text">
+                    </span>
+                </div>
+            </nav>
+        </div><br>
+        <div class="container">
+            <form class="form">
+                <div class="row">
                     <div class="row">
-                        <div class="row">
-                            <h4>Search a Location for Different Events</h4>
-                        </div><br>
-                        <div class="col-10">
-                            <input class="form-control" type="search" placeholder="Location" aria-label="Search"
-                                id="the-real-location">
-                        </div>
-                        <div class="col-2">
-                            <button class="btn btn-secondary" id="location-search">Search</button>
-                        </div>
+                        <h4>Search a Location for Different Events</h4>
+                    </div><br>
+                    <div class="col-10">
+                        <input class="form-control" type="search" placeholder="Location" aria-label="Search"
+                            id="the-real-location">
                     </div>
-                </form>
-            </div><br><br>
+                    <div class="col-2">
+                        <button class="btn btn-secondary" id="location-search">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div><br><br>
 
-            <div class="container">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Refine your Results
-                                    </div>
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">How Many People Are
-                                                    Going?</label>
-                                                <select class="form-control" id="how-many-input">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6+</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Family Friendly or Adult?</label>
-                                                <select class="form-control" id="fam-or-adult-input">
-                                                    <option>Framily Friendly</option>
-                                                    <option>Adult</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Indoor or Outdoor?</label>
-                                                <select class="form-control" id="in-or-out-input">
-                                                    <option>Indoor</option>
-                                                    <option>Outdoor</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">How Much do you Want to
-                                                    Pay?</label>
-                                                <select class="form-control" id="how-much-input">
-                                                    <option>$10-$20</option>
-                                                    <option>$30-$40</option>
-                                                    <option>$50-$60</option>
-                                                    <option>$70-$80</option>
-                                                    <option>$100+</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">What Time?</label>
-                                                <select class="form-control" id="what-time-input">
-                                                    <option>AM</option>
-                                                    <option>PM</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </div>
+        <div class="container main-box">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    Refine your Results
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">How Many People Are
+                                                Going?</label>
+                                            <select class="form-control" id="how-many-input">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6+</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Family Friendly or Adult?</label>
+                                            <select class="form-control" id="fam-or-adult-input">
+                                                <option>Framily Friendly</option>
+                                                <option>Adult</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Indoor or Outdoor?</label>
+                                            <select class="form-control" id="in-or-out-input">
+                                                <option>Indoor</option>
+                                                <option>Outdoor</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">How Much do you Want to
+                                                Pay?</label>
+                                            <select class="form-control" id="how-much-input">
+                                                <option>$10-$20</option>
+                                                <option>$30-$40</option>
+                                                <option>$50-$60</option>
+                                                <option>$70-$80</option>
+                                                <option>$100+</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">What Time?</label>
+                                            <select class="form-control" id="what-time-input">
+                                                <option>AM</option>
+                                                <option>PM</option>
+                                            </select>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Events based on your search
-                                    </div>
-                                    <div class="card-body">
-                                        <table>
-                                            <thread>
-                                                <tr>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thread>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row"></th>
-                                                    <td id="event-display">Lorem, ipsum dolor sit amet consectetur
-                                                        adipisicing elit.
-                                                        Eveniet distinct autem mollitia, nesciunt explicabo similique
-                                                        impedit fugit ut cumque ipsa optio aliquid iste voluptates nemo
-                                                        id repellat animi vitae eligendi.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Events based on your search
+                                </div>
+                                <div class="card-body">
+                                    <table>
+                                        <thread>
+                                            <tr>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thread>
+                                        <tbody id="event-display">
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td>Here is where your searched events will display.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Current and Forecasted Weather
-                                    </div>
-                                    <div class="card-body" id="current-display">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    Current and Forecasted Weather
+                                </div>
+                                <div class="card-body" id="current-display">
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><br><br>
-            <div class="card-footer">
-                © 2019 Debug Entity
             </div>
+        </div><br><br>
+        <div class="card-footer">
+            © 2019 Debug Entity
         </div>
     </div>
-
 
 
 
