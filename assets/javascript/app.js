@@ -12,9 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 // API URLS (can move them into functions if desired)
 var foursquareUrl =
-  "https://api.foursquare.com/v2/venues/search?near=" +
-  myLocation +
-  "&client_id=4T1KZV0MFURUT2KMWDORDZQL23ULXHEHE1LPUGHFP1PP023O&client_secret=YSZAY3ZWOOEGOHAV31BHFUJGAERZLOAICUTRNEA2FOZQJG0I&v=20180323&limit=10";
+  "https://api.foursquare.com/v2/venues/search?near=" + myLocation + "&client_id=4T1KZV0MFURUT2KMWDORDZQL23ULXHEHE1LPUGHFP1PP023O&client_secret=YSZAY3ZWOOEGOHAV31BHFUJGAERZLOAICUTRNEA2FOZQJG0I&v=20180323&limit=10";
 var currentConditionsUrl =
   "http://dataservice.accuweather.com/currentconditions/v1" +
   myLocation +
