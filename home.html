@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>goOUT</title>
-    <link rel="icon" type="img/png" href="./assets/css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png">
+    <link rel="icon" type="img/png" href="assets/css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Firebase Link -->
@@ -14,150 +14,152 @@
 
 </head>
 
-<body>
+<body class="slider">
+    <div class="load">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand-logo" href="#"><img src="./assets/css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png" width="65"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./assets/search.html">Sign up with us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Search Events by Genre
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Sports</a>
+                            <a class="dropdown-item" href="#">Concerts</a>
+                            <a class="dropdown-item" href="#">Indoor/Outdoor</a>
+                            <a class="dropdown-item" href="#">Family Friendly</a>
+                            <a class="dropdown-item" href="#">Movies</a>
+                            <a class="dropdown-item" href="#">Clubs/Bars</a>
+                            <a class="dropdown-item" href="#">Restaurants</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav><br><br>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">goOUT</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./assets/search.html">Sign up with us</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Search Events by Genre
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Sports</a>
-                        <a class="dropdown-item" href="#">Concerts</a>
-                        <a class="dropdown-item" href="#">Indoor/Outdoor</a>
-                        <a class="dropdown-item" href="#">Family Friendly</a>
-                        <a class="dropdown-item" href="#">Movies</a>
-                        <a class="dropdown-item" href="#">Clubs/Bars</a>
-                        <a class="dropdown-item" href="#">Restaurants</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav><br><br>
-
-    <div class="container">
-        <form class="form" actio="assets/search.html">
-            <div class="row">
+        <div class="container">
+            <form class="form" actio="assets/search.html">
                 <div class="row">
-                    <h4>Search a Location for Different Events</h4>
-                </div><br>
-                <div class="col-10">
-                    <input class="form-control" type="search" placeholder="Location like city/state" aria-label="Search"
-                        id="location-input">
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-outline-success" type="submit" id="search-btn">Search</button>
-                </div>
-            </div>
-        </form>
-    </div><br><br>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Refine your Results</h4>
+                    <div class="row">
+                        <h4>Search a Location for Different Events</h4>
+                    </div><br>
+                    <div class="col-10">
+                        <input class="form-control" type="search" placeholder="Location like city/state"
+                            aria-label="Search" id="location-input">
                     </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                How much are you willing to spend per person?
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" id="spend-input">
-                                    <option>$20-$30</option>
-                                    <option>$40-$50</option>
-                                    <option>$60-$70</option>
-                                    <option>$80-$90</option>
-                                    <option>$100+</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                How many people are going?
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" id="how-many-input">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6+</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                What time of the day is the event?
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" id="time-input">
-                                    <option>AM</option>
-                                    <option>PM</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                Is the event indoors or outdoors?
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" id="in-or-out-input">
-                                    <option>Indoor</option>
-                                    <option>Outdoor</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                Is it an adult or family event?
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" id="adult-or-family-input">
-                                    <option>Adult</option>
-                                    <option>Family</option>
-                                </select>
-                            </div>
-                        </form>
+                    <div class="col-2">
+                        <button class="btn btn-outline-success" type="submit" id="search-btn">Search</button>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Here are the events in your area.</h4>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table" id="event-response-display">
-                            <tbody>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td><img src="https://via.placeholder.com/150" alt="placeholder"></td>
-                                    <td>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                        ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                        viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                        lacinia congue felis in faucibus.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
+            </form>
         </div><br><br>
-    </div>
-    <div class="card-footer">
-        © 2019 Debug Entity
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Refine your Results</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    How much are you willing to spend per person?
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="spend-input">
+                                        <option>$20-$30</option>
+                                        <option>$40-$50</option>
+                                        <option>$60-$70</option>
+                                        <option>$80-$90</option>
+                                        <option>$100+</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    How many people are going?
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="how-many-input">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6+</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    What time of the day is the event?
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="time-input">
+                                        <option>AM</option>
+                                        <option>PM</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    Is the event indoors or outdoors?
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="in-or-out-input">
+                                        <option>Indoor</option>
+                                        <option>Outdoor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    Is it an adult or family event?
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="adult-or-family-input">
+                                        <option>Adult</option>
+                                        <option>Family</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Here are the events in your area.</h4>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table" id="event-response-display">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td><img src="https://via.placeholder.com/150" alt="placeholder"></td>
+                                        <td>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
+                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
+                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                                            Donec
+                                            lacinia congue felis in faucibus.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>  
+            </div><br><br>
+        </div>
+        <div class="card-footer">
+            © 2019 Debug Entity
+        </div>
     </div>
 
 

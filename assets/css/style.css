@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -25,24 +26,33 @@
 @keyframes animate {
 
     0%, 100% {
-        background-image: url('./images/imgg1.jpg')
+        background-image: url('./images/img01.jpg')
     }
 
     20% {
         background-image: url('./images/img02.jpg')
     }
+
     40%{
-        background-image: url('./images/img03.jpg')
+        background-image: url('./images/img7.jpg')
     }
 
     60% {
         background-image: url('./images/img4.jpg')
     }
 
-    80% {
+   80% {
         background-image: url('./images/img05.jpg')
     }
 
+}
+
+html, body {
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-brand{
@@ -66,9 +76,20 @@ h5, h4 {
 }
 
 body{
-    background-color: rgb(153, 142, 142);
+    background-size: cover;
 }
 
 .card-header{
     background-color: rgb(199, 206, 214);
+}
+
+.card-footer{
+    background-color: white;
+    text-decoration-color: black;
+}
+
+#contact-submit-btn{
+    background-color: green;
+    color: white;
+    animation-play-state: running;
 }
