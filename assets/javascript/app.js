@@ -26,19 +26,13 @@ var forecastConditionsUrl =
 
 $("#location-search").on("click", function (event) {
   console.log("Clicked...");
-
   event.preventDefault();
-
   var myLocation = $("#the-real-location").val().trim();
-
   console.log(myLocation);
-
   var eventbriteURL = "https://www.eventbriteapi.com/v3/events/search/?location.address=" + myLocation +
     "&location.within=10mi&token=S5ODNTLSPUBRNVOLMPSS";
-
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
-
 });
 
 function ajaxCall(url) {
