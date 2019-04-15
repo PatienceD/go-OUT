@@ -10,10 +10,14 @@
     top: 0;
     width: 100%;
     height: 100vh;
-    animation: animate 20s ease-in-out infinite; 
+    animation: animate 45s ease-in-out infinite; 
     background-size: cover;
-
 }
+
+.load::before{
+    animation-delay: 1s;
+    content: "";
+}   
 
 .load{
     position: absolute;
