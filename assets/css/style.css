@@ -61,6 +61,10 @@ html, body {
     height: 20%;
 }
 
+#main-results{
+    margin: 5px;
+}
+
 .logo {
     height: 50px;
     padding-right: 15px;
@@ -77,19 +81,16 @@ h5, h4 {
 
 body{
     background-size: cover;
+    font-family: 'PT Serif', serif;
 }
 
 .card-header{
-    background-color: rgb(199, 206, 214);
+    background-color: lightblue;
 }
 
 .card-footer{
     background-color: white;
     text-decoration-color: black;
-}
-
-#contact-submit-btn{
-    background-color: green;
-    color: white;
-    animation-play-state: running;
+    text-align: center;
+    background-color: lightblue;
 }
