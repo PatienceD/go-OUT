@@ -94,5 +94,6 @@ function showCurrentConditions(key) {
     method: "GET"
   }).then(function(currentConditions){
    console.log(currentConditions);
+   $("#current-display").text(currentConditions[0].Temperature.Imperial.Value + currentConditions[0].Temperature.Imperial.Unit);
   })
 }
