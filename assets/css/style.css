@@ -92,11 +92,15 @@ body{
     background-color: lightblue;
 }
 
-.card-footer{
+.footer{
     background-color: white;
     text-decoration-color: black;
     text-align: center;
     background-color: lightblue;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .card{
