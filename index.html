@@ -8,6 +8,7 @@
     <title>goOUT</title>
     <link rel="icon" type="img/png" href="./assets/css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
@@ -54,7 +55,6 @@
                 </div>
             </nav>
         </div><br>
-
         <div class="container">
             <form class="form">
                 <div class="row">
@@ -71,8 +71,7 @@
                 </div>
             </form>
         </div><br><br>
-
-        <div class="row">
+        <div class="row" id="main-results">
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">
@@ -80,25 +79,13 @@
                     </div>
                     <div class="card-body">
                         <form>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">How Many People Are
-                                    Going?</label>
-                                <select class="form-control" id="how-many-input">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6+</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="exampleFormControlSelect1">Family Friendly or Adult?</label>
                                 <select class="form-control" id="fam-or-adult-input">
-                                    <option>Framily Friendly</option>
+                                    <option>Family Friendly</option>
                                     <option>Adult</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Indoor or Outdoor?</label>
                                 <select class="form-control" id="in-or-out-input">
@@ -107,16 +94,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">How Much do you Want to
-                                    Pay?</label>
+                                <label for="exampleFormControlSelect1">How much is the event?</label>
                                 <select class="form-control" id="how-much-input">
-                                    <option>$10-$20</option>
-                                    <option>$30-$40</option>
-                                    <option>$50-$60</option>
-                                    <option>$70-$80</option>
-                                    <option>$100+</option>
+                                    <option>Free</option>
+                                    <option>$$$$</option>
                                 </select>
-                              
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">What Time?</label>
@@ -129,7 +111,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
@@ -145,11 +126,8 @@
                             <tbody id="event-display">
                                 <tr>
                                     <th scope="row"></th>
-                                    <td>Lorem, ipsum dolor sit amet consectetur
-                                        adipisicing elit.
-                                        Eveniet distinct autem mollitia, nesciunt explicabo similique
-                                        impedit fugit ut cumque ipsa optio aliquid iste voluptates nemo
-                                        id repellat animi vitae eligendi.</td>
+                                    <td>Your searched events will display here with the title of the event embeded with
+                                        a link, the event logo, and a brief description of the event.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -169,12 +147,10 @@
             </div>
         </div><br><br><br>
 
-        <div class="card-footer">
+        <div class="footer">
             © 2019 Debug Entity
         </div>
     </div>
-
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

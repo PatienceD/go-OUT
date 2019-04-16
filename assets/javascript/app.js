@@ -24,7 +24,6 @@ var forecastConditionsUrl =
 
 $("#location-search").on("click", function(event) {
   console.log("Clicked...");
-
   event.preventDefault();
 
   var myLocation = $("#the-real-location")
@@ -43,6 +42,8 @@ $("#location-search").on("click", function(event) {
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
   getLocationKey(weatherLocation);
+
+
 });
 
 function ajaxCall(url) {
@@ -57,15 +58,17 @@ function ajaxCall(url) {
     //can then be used by eventDisplay()
     console.log(response);
     $("#event-display").empty();
-    for (var i = 0; i < 3; i++) {
-      var t = $("<tr>");
-      var eventImg = $("<img>")
-        .addClass("logo")
-        .attr("src", response.events[i].logo.url);
-      t.append(eventImg);
-      t.append($("<td>").text(response.events[i].summary));
-      $("#event-display").prepend(t);
-    }
+
+    for (var i = 0; i < 5; i++) {
+    var t = $("<tr>");
+    var eventUrl = response.events[i].url;
+    console.log(eventUrl);
+    var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+    t.append(eventImg);
+    t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br>"));
+    $("#event-display").prepend(t);
+    };
+
   });
 }
 
