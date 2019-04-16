@@ -53,7 +53,7 @@ function ajaxCall(url) {
     console.log(eventUrl);
     var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
     t.append(eventImg);
-    t.append($("<td>").html("<p1><a href= " + eventUrl + ">" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br>"));
+    t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br>"));
     $("#event-display").prepend(t);
     };
   });
