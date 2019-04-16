@@ -22,7 +22,7 @@ var forecastConditionsUrl =
   myLocation +
   "A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH";
 
-$("#location-search").on("click", function(event) {
+$("#location-search").on("click", function (event) {
   console.log("Clicked...");
   event.preventDefault();
 
@@ -52,21 +52,21 @@ function ajaxCall(url) {
   $.ajax({
     url: url,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log("test");
     //after the response comes back use it to set a global variable that
     //can then be used by eventDisplay()
     console.log(response);
     $("#event-display").empty();
-    
+
     for (var i = 0; i < 12; i++) {
 
-    var t = $("<tr>");
-    var eventUrl = response.events[i].url;
-    var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
-    t.append(eventImg);
-    t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br>"));
-    $("#event-display").prepend(t);
+      var t = $("<tr>");
+      var eventUrl = response.events[i].url;
+      var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+      t.append(eventImg);
+      t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br>"));
+      $("#event-display").prepend(t);
     };
 
   });
@@ -77,7 +77,7 @@ function getLocationKey(weatherLocation) {
   $.ajax({
     url: weatherLocation,
     method: "GET"
-  }).then(function(response2) {
+  }).then(function (response2) {
     var results = response2[0].Key;
     //after the response comes back use it to set a global variable that
     //can then be used by eventDisplay()
@@ -95,8 +95,25 @@ function showCurrentConditions(key) {
   $.ajax({
     url: queryUrl,
     method: "GET"
-  }).then(function(currentConditions){
-   console.log(currentConditions);
-   $("#current-display").text(currentConditions[0].Temperature.Imperial.Value + currentConditions[0].Temperature.Imperial.Unit);
+  }).then(function (currentConditions) {
+    console.log(currentConditions);
+    $("#current-display").text(currentConditions[0].Temperature.Imperial.Value + currentConditions[0].Temperature.Imperial.Unit);
   })
+}
+
+// When the user scrolls down 10px from the top of the document, show the button
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  // document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
