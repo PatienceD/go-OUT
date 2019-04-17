@@ -23,9 +23,10 @@ var forecastConditionsUrl =
   "A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH";
 
 $("#location-search").on("click", function (event) {
+  debugger;
   console.log("Clicked...");
   event.preventDefault();
-
+  document.getElementById("myBtn").style.display = "block";
   var myLocation = $("#the-real-location")
     .val()
     .trim();
@@ -102,10 +103,13 @@ function showCurrentConditions(key) {
 }
 
 // When the user scrolls down 10px from the top of the document, show the button
-window.onscroll = function () { scrollFunction() };
+//window.onscroll = function () { scrollFunction() };
+
+//document.getElementById("event-display").onscroll( function(){  scrollFunction(); });
 
 function scrollFunction() {
-  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+  debugger;
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     document.getElementById("myBtn").style.display = "block";
   } else {
     document.getElementById("myBtn").style.display = "none";
@@ -114,6 +118,6 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  // document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  document.body.scrollTop = 0; // For Safari
+  // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
