@@ -30,13 +30,16 @@ $("#location-search").on("click", function (event) {
   var eventbriteURL =
     "https://www.eventbriteapi.com/v3/events/search/?location.address=" +
     myLocation +
-    "&location.within=10mi&token=S5ODNTLSPUBRNVOLMPSS";
+    "&location.within=10mi&expand=external_ticketing,ticket_availability&token=S5ODNTLSPUBRNVOLMPSS";
   var weatherLocation =
     "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&q=" +
     myLocation;
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
   getLocationKey(weatherLocation);
+
+  // primary AccuWeather key A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH
+  // secondary AccuWeather key 2QSqJXGVZVwwlziV0njAtYbbLZONsCTm
 });
 
 function ajaxCall(url) {
@@ -59,7 +62,12 @@ function ajaxCall(url) {
       var eventUrl = response.events[i].url;
       var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
       t.append(eventImg);
-      t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br>"));
+      if (response.events[i].is_free === true) {
+        t.append("Cost: FREE");
+      } else {
+        t.append("Cost: " + response.events[i].ticket_availability.minimum_ticket_price.major_value + " - " + response.events[i].ticket_availability.maximum_ticket_price.display)
+      };
+      t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
       $("#event-display").prepend(t);
     };
 
