@@ -15,15 +15,10 @@ var foursquareUrl =
   "https://api.foursquare.com/v2/venues/search?near=" +
   myLocation +
   "&client_id=4T1KZV0MFURUT2KMWDORDZQL23ULXHEHE1LPUGHFP1PP023O&client_secret=YSZAY3ZWOOEGOHAV31BHFUJGAERZLOAICUTRNEA2FOZQJG0I&v=20180323&limit=10";
-// var weatherLocation= "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&q=" + myLocation;
-
-var forecastConditionsUrl =
-  "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
-  myLocation +
-  "A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH";
 
 $("#location-search").on("click", function(event) {
   console.log("Clicked...");
+
   event.preventDefault();
 
   var myLocation = $("#the-real-location")
@@ -42,8 +37,6 @@ $("#location-search").on("click", function(event) {
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
   getLocationKey(weatherLocation);
-
-
 });
 
 function ajaxCall(url) {
@@ -58,17 +51,15 @@ function ajaxCall(url) {
     //can then be used by eventDisplay()
     console.log(response);
     $("#event-display").empty();
-
-    for (var i = 0; i < 5; i++) {
-    var t = $("<tr>");
-    var eventUrl = response.events[i].url;
-    console.log(eventUrl);
-    var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
-    t.append(eventImg);
-    t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br>"));
-    $("#event-display").prepend(t);
-    };
-
+    for (var i = 0; i < 3; i++) {
+      var t = $("<tr>");
+      var eventImg = $("<img>")
+        .addClass("logo")
+        .attr("src", response.events[i].logo.url);
+      t.append(eventImg);
+      t.append($("<td>").text(response.events[i].summary));
+      $("#event-display").prepend(t);
+    }
   });
 }
 
@@ -83,6 +74,7 @@ function getLocationKey(weatherLocation) {
     //can then be used by eventDisplay()
     console.log(results);
     showCurrentConditions(results);
+    showForecast(results);
   });
 }
 
@@ -98,5 +90,23 @@ function showCurrentConditions(key) {
   }).then(function(currentConditions){
    console.log(currentConditions);
    $("#current-display").text(currentConditions[0].Temperature.Imperial.Value + currentConditions[0].Temperature.Imperial.Unit);
+  });
+}
+function showForecast (key) {
+  var queryUrl = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
+  key +
+  "?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&details=true";
+  console.log(queryUrl);
+  $.ajax({
+    url: queryUrl,
+    method: "GET"
+  }).then(function(forecastConditions){
+    console.log(forecastConditions);
+    for (var i = 0; i < 5; i++) {
+      var t = $("<div>");
+      t.append($("<div>").html(forecastConditions.DailyForecasts[i].Temperature.Maximum.Value + forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit));
+      t.append($("<div>").html(forecastConditions.DailyForecasts[i].Temperature.Minimum.Value + forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit));
+      $("#current-display").append(t);
+    }
   })
 }
