@@ -17,7 +17,6 @@ var foursquareUrl =
   "&client_id=4T1KZV0MFURUT2KMWDORDZQL23ULXHEHE1LPUGHFP1PP023O&client_secret=YSZAY3ZWOOEGOHAV31BHFUJGAERZLOAICUTRNEA2FOZQJG0I&v=20180323&limit=10";
 
 $("#location-search").on("click", function (event) {
-  debugger;
   console.log("Clicked...");
 
   event.preventDefault();
@@ -93,13 +92,13 @@ function showCurrentConditions(key) {
     url: queryUrl,
     method: "GET"
 
-  }).then(function(currentConditions) {
+  }).then(function (currentConditions) {
     console.log(currentConditions);
     $("#current-display").text(
       "Current Conditions: " +
-        currentConditions[0].Temperature.Imperial.Value +
-        currentConditions[0].Temperature.Imperial.Unit +
-        currentConditions[0].WeatherText
+      currentConditions[0].Temperature.Imperial.Value +
+      currentConditions[0].Temperature.Imperial.Unit +
+      currentConditions[0].WeatherText
     );
   });
 }
@@ -112,20 +111,20 @@ function showForecast(key) {
   $.ajax({
     url: queryUrl,
     method: "GET"
-  }).then(function(forecastConditions) {
+  }).then(function (forecastConditions) {
     console.log(forecastConditions);
     for (var i = 0; i < 5; i++) {
       var t = $("<div>");
       t.append(
         $("<div>").html(
           forecastConditions.DailyForecasts[i].Temperature.Maximum.Value +
-            forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit
+          forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit
         )
       );
       t.append(
         $("<div>").html(
           forecastConditions.DailyForecasts[i].Temperature.Minimum.Value +
-            forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit
+          forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit
         )
       );
       t.append(
@@ -142,7 +141,7 @@ var email = "";
 var message = "";
 
 //Capture Button Click
-$("#contact-submit-btn").on("click", function(event) {
+$("#contact-submit-btn").on("click", function (event) {
   event.preventDefault();
   //Grabbed values from text-boxes
   name = $("#name-input")
@@ -155,11 +154,11 @@ $("#contact-submit-btn").on("click", function(event) {
     .val()
     .trim();
 
-    var newContact ={
-      name: name,
-      email: email,
-      message: message
-    }
+  var newContact = {
+    name: name,
+    email: email,
+    message: message
+  }
   //Code for Setting values in database
   database.ref().push(newContact);
   // Firebase watcher + initial loader
@@ -174,13 +173,7 @@ $("#contact-submit-btn").on("click", function(event) {
   $("#message-input").val("");
 });
 
-// When the user scrolls down 10px from the top of the document, show the button
-//window.onscroll = function () { scrollFunction() };
-
-//document.getElementById("event-display").onscroll( function(){  scrollFunction(); });
-
 function scrollFunction() {
-  debugger;
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     document.getElementById("myBtn").style.display = "block";
   } else {

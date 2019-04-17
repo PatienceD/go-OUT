@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>goOUT</title>
-    <link
-      rel="icon"
-      type="img/png"
-      href="./assets/css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=PT+Serif"
-      rel="stylesheet"
-    />
+    <link rel="icon" type="img/png" href="./assets/css/images/9e7e0825-6e41-4c25-8427-2a0cb32d48be.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-  </head>
+</head>
 
 </head>
 
@@ -71,143 +62,94 @@
                     <div class="row">
                         <h4>Search a Location for Different Events</h4>
                     </div><br>
-                    <div class="col-9">
+                    <div class="col-10">
                         <input class="form-control" type="search" placeholder="Location" aria-label="Search"
-                            id="the-real-location">
+                            id="the-real-location" />
                     </div>
-                    <div class="col-3">
-                        <button class="btn btn-secondary" id="location-search">Search</button>
+                    <div class="col-2">
+                        <button class="btn btn-secondary" id="location-search">
+                            Search
+                        </button>
                     </div>
                 </div>
-              </li>
-            </ul>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarText"
-              aria-controls="navbarText"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <span class="navbar-text"> </span>
-          </div>
-        </nav>
-      </div>
-      <br />
-      <div class="container">
-        <form class="form">
-          <div class="row">
-            <div class="row">
-              <h4>Search a Location for Different Events</h4>
-            </div>
-            <br />
-            <div class="col-10">
-              <input
-                class="form-control"
-                type="search"
-                placeholder="Location"
-                aria-label="Search"
-                id="the-real-location"
-              />
-            </div>
-            <div class="col-2">
-              <button class="btn btn-secondary" id="location-search">
-                Search
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <br /><br />
-      <div class="row" id="main-results">
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-header">
-              Refine your Results
-            </div>
-            <div class="card-body">
-              <form>
-                <!-- <div class="form-group">
-                                <label for="exampleFormControlSelect1">Family Friendly or Adult?</label>
-                                <select class="form-control" id="fam-or-adult-input">
-                                    <option>Family Friendly</option>
-                                    <option>Adult</option>
+            </form>
+        </div>
+        <br><br>
+        <div class="row" id="main-results">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        Refine your Results
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Indoor or Outdoor?</label>
+                                <select class="form-control" id="in-or-out-input">
+                                    <option>Indoor</option>
+                                    <option>Outdoor</option>
                                 </select>
-                            </div> -->
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1"
-                    >Indoor or Outdoor?</label
-                  >
-                  <select class="form-control" id="in-or-out-input">
-                    <option>Indoor</option>
-                    <option>Outdoor</option>
-                  </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">How much is the event?</label>
+                                <select class="form-control" id="how-much-input">
+                                    <option>Free</option>
+                                    <option>$$$$</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">What Time?</label>
+                                <select class="form-control" id="what-time-input">
+                                    <option>AM</option>
+                                    <option>PM</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1"
-                    >How much is the event?</label
-                  >
-                  <select class="form-control" id="how-much-input">
-                    <option>Free</option>
-                    <option>$$$$</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">What Time?</label>
-                  <select class="form-control" id="what-time-input">
-                    <option>AM</option>
-                    <option>PM</option>
-                  </select>
-                </div>
-              </form>
             </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              Events based on your search
-            </div>
-            <div class="card-body">
-              <table>
-                <thread>
-                  <tr>
-                    <th scope="col"></th>
-                  </tr>
-                </thread>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Events based on your search
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            <thread>
+                                <tr>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thread>
 
-                <tbody id="event-display">
-                  <tr>
-                    <th scope="row"></th>
-                    <td>
-                      Your searched events will display here with the title of
-                      the event embeded with a link, the event logo, and a brief
-                      description of the event.
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                            <tbody id="event-display">
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                        Your searched events will display here with the title of
+                                        the event embeded with a link, the event logo, and a brief
+                                        description of the event.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        Current and Forecasted Weather
+                    </div>
+                    <div class="card-body" id="current-display">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-header">
-              Current and Forecasted Weather
-            </div>
-            <div class="card-body" id="current-display">
-            </div>
-          </div>
-        </div>
-      </div>
-      <br /><br /><br />
+        <br><br><br>
 
-      <div class="footer">
-        © 2019 Debug Entity
-      </div>
+        <div class="footer">
+            © 2019 Debug Entity
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -215,5 +157,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
-  </body>
+</body>
+
 </html>
