@@ -98,7 +98,8 @@ function showCurrentConditions(key) {
     $("#current-display").text(
       "Current Conditions: " +
         currentConditions[0].Temperature.Imperial.Value +
-        currentConditions[0].Temperature.Imperial.Unit
+        currentConditions[0].Temperature.Imperial.Unit +
+        currentConditions[0].WeatherText
     );
   });
 }
@@ -127,11 +128,51 @@ function showForecast(key) {
             forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit
         )
       );
+      t.append(
+        $("<div>").html(forecastConditions.DailyForecasts[i].Day.IconPhrase)
+      );
       $("#current-display").append(t);
     }
   });
 
 }
+//Initial Values
+var name = "";
+var email = "";
+var message = "";
+
+//Capture Button Click
+$("#contact-submit-btn").on("click", function(event) {
+  event.preventDefault();
+  //Grabbed values from text-boxes
+  name = $("#name-input")
+    .val()
+    .trim();
+  email = $("#email-input")
+    .val()
+    .trim();
+  message = $("#message-input")
+    .val()
+    .trim();
+
+    var newContact ={
+      name: name,
+      email: email,
+      message: message
+    }
+  //Code for Setting values in database
+  database.ref().push(newContact);
+  // Firebase watcher + initial loader
+  console.log(newContact);
+  console.log(newContact.name);
+  console.log(newContact.email);
+  console.log(newContact.message);
+
+  //Clear text boxes after submit
+  $("#name-input").val("");
+  $("#email-input").val("");
+  $("#message-input").val("");
+});
 
 // When the user scrolls down 10px from the top of the document, show the button
 //window.onscroll = function () { scrollFunction() };
