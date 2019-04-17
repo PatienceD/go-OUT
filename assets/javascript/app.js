@@ -87,26 +87,41 @@ function showCurrentConditions(key) {
   $.ajax({
     url: queryUrl,
     method: "GET"
-  }).then(function(currentConditions){
-   console.log(currentConditions);
-   $("#current-display").text(currentConditions[0].Temperature.Imperial.Value + currentConditions[0].Temperature.Imperial.Unit);
+  }).then(function(currentConditions) {
+    console.log(currentConditions);
+    $("#current-display").text(
+      "Current Conditions: " +
+        currentConditions[0].Temperature.Imperial.Value +
+        currentConditions[0].Temperature.Imperial.Unit
+    );
   });
 }
-function showForecast (key) {
-  var queryUrl = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
-  key +
-  "?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&details=true";
+function showForecast(key) {
+  var queryUrl =
+    "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
+    key +
+    "?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&details=true";
   console.log(queryUrl);
   $.ajax({
     url: queryUrl,
     method: "GET"
-  }).then(function(forecastConditions){
+  }).then(function(forecastConditions) {
     console.log(forecastConditions);
     for (var i = 0; i < 5; i++) {
       var t = $("<div>");
-      t.append($("<div>").html(forecastConditions.DailyForecasts[i].Temperature.Maximum.Value + forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit));
-      t.append($("<div>").html(forecastConditions.DailyForecasts[i].Temperature.Minimum.Value + forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit));
+      t.append(
+        $("<div>").html(
+          forecastConditions.DailyForecasts[i].Temperature.Maximum.Value +
+            forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit
+        )
+      );
+      t.append(
+        $("<div>").html(
+          forecastConditions.DailyForecasts[i].Temperature.Minimum.Value +
+            forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit
+        )
+      );
       $("#current-display").append(t);
     }
-  })
+  });
 }
