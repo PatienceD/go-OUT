@@ -16,11 +16,12 @@ var foursquareUrl =
   myLocation +
   "&client_id=4T1KZV0MFURUT2KMWDORDZQL23ULXHEHE1LPUGHFP1PP023O&client_secret=YSZAY3ZWOOEGOHAV31BHFUJGAERZLOAICUTRNEA2FOZQJG0I&v=20180323&limit=10";
 
-$("#location-search").on("click", function(event) {
+$("#location-search").on("click", function (event) {
+  debugger;
   console.log("Clicked...");
 
   event.preventDefault();
-
+  document.getElementById("myBtn").style.display = "block";
   var myLocation = $("#the-real-location")
     .val()
     .trim();
@@ -45,21 +46,25 @@ function ajaxCall(url) {
   $.ajax({
     url: url,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log("test");
     //after the response comes back use it to set a global variable that
     //can then be used by eventDisplay()
     console.log(response);
     $("#event-display").empty();
-    for (var i = 0; i < 3; i++) {
+
+
+    for (var i = 0; i < 12; i++) {
+
       var t = $("<tr>");
-      var eventImg = $("<img>")
-        .addClass("logo")
-        .attr("src", response.events[i].logo.url);
+      var eventUrl = response.events[i].url;
+      var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
       t.append(eventImg);
-      t.append($("<td>").text(response.events[i].summary));
+      t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br>"));
       $("#event-display").prepend(t);
-    }
+    };
+
+
   });
 }
 
@@ -68,7 +73,7 @@ function getLocationKey(weatherLocation) {
   $.ajax({
     url: weatherLocation,
     method: "GET"
-  }).then(function(response2) {
+  }).then(function (response2) {
     var results = response2[0].Key;
     //after the response comes back use it to set a global variable that
     //can then be used by eventDisplay()
@@ -87,6 +92,7 @@ function showCurrentConditions(key) {
   $.ajax({
     url: queryUrl,
     method: "GET"
+
   }).then(function(currentConditions) {
     console.log(currentConditions);
     $("#current-display").text(
@@ -124,4 +130,25 @@ function showForecast(key) {
       $("#current-display").append(t);
     }
   });
+
+}
+
+// When the user scrolls down 10px from the top of the document, show the button
+//window.onscroll = function () { scrollFunction() };
+
+//document.getElementById("event-display").onscroll( function(){  scrollFunction(); });
+
+function scrollFunction() {
+  debugger;
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
