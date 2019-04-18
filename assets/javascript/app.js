@@ -32,11 +32,11 @@ $("#location-search").on("click", function (event) {
     myLocation +
     "&location.within=10mi&expand=external_ticketing,ticket_availability&token=S5ODNTLSPUBRNVOLMPSS";
   var weatherLocation =
-    "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&q=" +
+    // "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&q=" +
     myLocation;
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
-  getLocationKey(weatherLocation);
+  // getLocationKey(weatherLocation);
 
   // primary AccuWeather key A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH
   // secondary AccuWeather key 2QSqJXGVZVwwlziV0njAtYbbLZONsCTm
@@ -54,25 +54,86 @@ function ajaxCall(url) {
     //can then be used by eventDisplay()
     console.log(response);
     $("#event-display").empty();
+    var paidEvents = response.events.filter(function(events) {response.events.is_free === true});
+    console.log(paidEvents)
+    displayEvents(response);
+  });
+}
+var cost = $("#how-much-input :selected").val();
+var local = $("#in-or-out-input :selected").val();
+var time = $("#what-time-input :selected").val();
+
+function filteredSearch(local, cost, time) {
+  if(cost === "Free" && local === "Outdoors" && time === "PM") {
+  
+  } else if (cost === "Free" && local === "Outdoors" && time === "AM"){
+
+  } else if (cost === "Free" && local === "Indoors" && time === "AM") {
+
+  } else if (cost === "Free" && local === "Indoors" && time === "PM") {
+
+  } else if (cost === "$$$$" && local === "Outdoors" && time === "AM") {
+
+  } else if (cost === "$$$$" && local === "Outdoors" && time === "PM") {
+
+  } else if (cost === "$$$$" && local === "Indoors" && time === "AM") {
+
+  } else if (cost === "$$$$" && local === "Indoors" && time === "PM") {
+
+  } else {
+    
+  }
+};
 
 
-    for (var i = 0; i < 12; i++) {
-
+function displayEvents(response) {
+  if ($("#how-much-input :selected").val() === "Free") {
+    i = 0;
+    while(i < 12) {
       var t = $("<tr>");
       var eventUrl = response.events[i].url;
       var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
       t.append(eventImg);
-      if (response.events[i].is_free === true) {
+      if(isFree(response.events[i]) === true) {
         t.append("Cost: FREE");
-      } else {
-        t.append("Cost: " + response.events[i].ticket_availability.minimum_ticket_price.major_value + " - " + response.events[i].ticket_availability.maximum_ticket_price.display)
-      };
+        t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
+        $("#event-display").append(t);
+      }
+      i++;
+    }
+  }
+  else {
+    i = 0;
+    while(i < 12){
+      var t = $("<tr>");
+      var eventUrl = response.events[i].url;
+      var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+      t.append(eventImg);
+      t.append("Cost: " + response.events[i].ticket_availability.minimum_ticket_price.major_value + " - " + response.events[i].ticket_availability.maximum_ticket_price.display)
       t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
-      $("#event-display").prepend(t);
+      $("#event-display").append(t);
+      i++;
     };
+  }
+  // for (var i = 0; i < 12; i++) {
+  //   var t = $("<tr>");
+  //   var eventUrl = response.events[i].url;
+  //   var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+  //   t.append(eventImg);
+  //   if(isFree(response.events[i]) === true) {
+  //     t.append("Cost: FREE");
+  //   } else {
+    //   t.append("Cost: " + response.events[i].ticket_availability.minimum_ticket_price.major_value + " - " + response.events[i].ticket_availability.maximum_ticket_price.display)
+    // };
+    // t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
+    // $("#event-display").prepend(t);
+  };
+// }
 
-
-  });
+function isFree(response) {
+    if(response.is_free === true) {
+      return true;
+    }
 }
 
 function getLocationKey(weatherLocation) {
