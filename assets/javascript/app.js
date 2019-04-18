@@ -32,7 +32,7 @@ $("#location-search").on("click", function(event) {
     myLocation +
     "&location.within=10mi&expand=external_ticketing,ticket_availability&token=S5ODNTLSPUBRNVOLMPSS";
   var weatherLocation =
-    "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=2QSqJXGVZVwwlziV0njAtYbbLZONsCTm&q=" +
+    "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj &q=" +
     myLocation;
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
@@ -108,7 +108,7 @@ function showCurrentConditions(key) {
   var queryUrl =
     "http://dataservice.accuweather.com/currentconditions/v1/" +
     key +
-    "?apikey=2QSqJXGVZVwwlziV0njAtYbbLZONsCTm&details=true";
+    "?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj &details=true";
   console.log(queryUrl);
   $.ajax({
     url: queryUrl,
@@ -118,23 +118,35 @@ function showCurrentConditions(key) {
     $("#current-display").html(
       currentConditions[0].Temperature.Imperial.Value +
         currentConditions[0].Temperature.Imperial.Unit +
-        " " +
+        " and " +
         currentConditions[0].WeatherText
     );
+   
+    var icon = $("<img>");
+    var iconNumber = currentConditions[0].WeatherIcon;
+    if (iconNumber < 10) {
+      iconNumber = "0" + currentConditions[0].WeatherIcon;
+    }
+    let imageUrl =
+      "https://developer.accuweather.com/sites/default/files/" +
+      iconNumber +
+      "-s.png";
+    icon.attr("src", imageUrl);
+    $("#current-display").prepend(icon);
   });
 }
 function showForecast(key) {
   var queryUrl =
     "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
     key +
-    "?apikey=2QSqJXGVZVwwlziV0njAtYbbLZONsCTm&details=true";
+    "?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj&details=true";
   console.log(queryUrl);
   $.ajax({
     url: queryUrl,
     method: "GET"
   }).then(function(forecastConditions) {
     console.log(forecastConditions);
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
       $("#temp-display" + i).html(
         "<p>" +
           forecastConditions.DailyForecasts[i].Temperature.Maximum.Value +
@@ -148,7 +160,7 @@ function showForecast(key) {
       var icon = $("<img>");
       var iconNumber = forecastConditions.DailyForecasts[i].Day.Icon;
       if (iconNumber < 10) {
-        iconNumber = "0" + i;
+        iconNumber = "0" + forecastConditions.DailyForecasts[i].Day.Icon;
       }
       let imageUrl =
         "https://developer.accuweather.com/sites/default/files/" +
