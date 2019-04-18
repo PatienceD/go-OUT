@@ -116,8 +116,7 @@ function showCurrentConditions(key) {
   }).then(function(currentConditions) {
     console.log(currentConditions);
     $("#current-display").html(
-      "Current Conditions: " +
-        currentConditions[0].Temperature.Imperial.Value +
+      currentConditions[0].Temperature.Imperial.Value +
         currentConditions[0].Temperature.Imperial.Unit +
         " " +
         currentConditions[0].WeatherText
@@ -135,28 +134,31 @@ function showForecast(key) {
     method: "GET"
   }).then(function(forecastConditions) {
     console.log(forecastConditions);
-    for (var i = 0; i < 5; i++) {
-      var t = $("<div>");
-      t.append(
-        $("<div>").text(
+    for (var i = 0; i < 4; i++) {
+      $("#temp-display" + i).html(
+        "<p>" +
           forecastConditions.DailyForecasts[i].Temperature.Maximum.Value +
-            forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit +
-            "/" +
-            forecastConditions.DailyForecasts[i].Temperature.Minimum.Value +
-            forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit
-        )
+          forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit +
+          "/" +
+          forecastConditions.DailyForecasts[i].Temperature.Minimum.Value +
+          forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit +
+          "</p>"
       );
-      t.prepend
-        // var icon = $("<img>");
-        // var iconNumber = forecastConditions.DailyForecasts[i].Day.Icon;
-        // if (iconNumber < 10) {
-        //   iconNumber = "0" + i
-        // }
-        // let imageUrl = "https://developer.accuweather.com/sites/default/files/" + iconNumber + "-s.png"
-        // icon.attr("src", imageUrl)
-        // $("#icons").append(icon)
-        ();
-      $("#current-display").append(t);
+
+      var icon = $("<img>");
+      var iconNumber = forecastConditions.DailyForecasts[i].Day.Icon;
+      if (iconNumber < 10) {
+        iconNumber = "0" + i;
+      }
+      let imageUrl =
+        "https://developer.accuweather.com/sites/default/files/" +
+        iconNumber +
+        "-s.png";
+      icon.attr("src", imageUrl);
+
+      $("#temp-display" + i).prepend(icon);
+
+      $("#forecasted-display").append();
     }
   });
 }
