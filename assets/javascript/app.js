@@ -16,7 +16,7 @@ var foursquareUrl =
   myLocation +
   "&client_id=4T1KZV0MFURUT2KMWDORDZQL23ULXHEHE1LPUGHFP1PP023O&client_secret=YSZAY3ZWOOEGOHAV31BHFUJGAERZLOAICUTRNEA2FOZQJG0I&v=20180323&limit=10";
 
-$("#location-search").on("click", function (event) {
+$("#location-search").on("click", function(event) {
   console.log("Clicked...");
 
   event.preventDefault();
@@ -32,7 +32,7 @@ $("#location-search").on("click", function (event) {
     myLocation +
     "&location.within=10mi&expand=external_ticketing,ticket_availability&token=S5ODNTLSPUBRNVOLMPSS";
   var weatherLocation =
-    // "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&q=" +
+    "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj &q=" +
     myLocation;
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
@@ -48,7 +48,7 @@ function ajaxCall(url) {
   $.ajax({
     url: url,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
     console.log("test");
     //after the response comes back use it to set a global variable that
     //can then be used by eventDisplay()
@@ -74,6 +74,7 @@ function filteredSearch(local, cost, time) {
 
   } else if (cost === "$$$$" && local === "Outdoors" && time === "AM") {
 
+
   } else if (cost === "$$$$" && local === "Outdoors" && time === "PM") {
 
   } else if (cost === "$$$$" && local === "Indoors" && time === "AM") {
@@ -92,7 +93,9 @@ function displayEvents(response) {
     while(i < 12) {
       var t = $("<tr>");
       var eventUrl = response.events[i].url;
-      var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+      var eventImg = $("<img>")
+        .addClass("logo")
+        .attr("src", response.events[i].logo.url);
       t.append(eventImg);
       if(isFree(response.events[i]) === true) {
         t.append("Cost: FREE");
@@ -115,25 +118,12 @@ function displayEvents(response) {
       i++;
     };
   }
-  // for (var i = 0; i < 12; i++) {
-  //   var t = $("<tr>");
-  //   var eventUrl = response.events[i].url;
-  //   var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
-  //   t.append(eventImg);
-  //   if(isFree(response.events[i]) === true) {
-  //     t.append("Cost: FREE");
-  //   } else {
-    //   t.append("Cost: " + response.events[i].ticket_availability.minimum_ticket_price.major_value + " - " + response.events[i].ticket_availability.maximum_ticket_price.display)
-    // };
-    // t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
-    // $("#event-display").prepend(t);
-  };
-// }
 
 function isFree(response) {
     if(response.is_free === true) {
       return true;
     }
+
 }
 
 function getLocationKey(weatherLocation) {
@@ -141,7 +131,7 @@ function getLocationKey(weatherLocation) {
   $.ajax({
     url: weatherLocation,
     method: "GET"
-  }).then(function (response2) {
+  }).then(function(response2) {
     var results = response2[0].Key;
     //after the response comes back use it to set a global variable that
     //can then be used by eventDisplay()
@@ -155,54 +145,71 @@ function showCurrentConditions(key) {
   var queryUrl =
     "http://dataservice.accuweather.com/currentconditions/v1/" +
     key +
-    "?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&details=true";
+    "?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj &details=true";
   console.log(queryUrl);
   $.ajax({
     url: queryUrl,
     method: "GET"
-
-  }).then(function (currentConditions) {
+  }).then(function(currentConditions) {
     console.log(currentConditions);
-    $("#current-display").text(
-      "Current Conditions: " +
+    $("#current-display").html(
       currentConditions[0].Temperature.Imperial.Value +
-      currentConditions[0].Temperature.Imperial.Unit +
-      currentConditions[0].WeatherText
+        currentConditions[0].Temperature.Imperial.Unit +
+        " and " +
+        currentConditions[0].WeatherText
     );
+   
+    var icon = $("<img>");
+    var iconNumber = currentConditions[0].WeatherIcon;
+    if (iconNumber < 10) {
+      iconNumber = "0" + currentConditions[0].WeatherIcon;
+    }
+    let imageUrl =
+      "https://developer.accuweather.com/sites/default/files/" +
+      iconNumber +
+      "-s.png";
+    icon.attr("src", imageUrl);
+    $("#current-display").prepend(icon);
   });
 }
 function showForecast(key) {
   var queryUrl =
     "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
     key +
-    "?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH&details=true";
+    "?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj&details=true";
   console.log(queryUrl);
   $.ajax({
     url: queryUrl,
     method: "GET"
-  }).then(function (forecastConditions) {
+  }).then(function(forecastConditions) {
     console.log(forecastConditions);
     for (var i = 0; i < 5; i++) {
-      var t = $("<div>");
-      t.append(
-        $("<div>").html(
+      $("#temp-display" + i).html(
+        "<p>" +
           forecastConditions.DailyForecasts[i].Temperature.Maximum.Value +
-          forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit
-        )
-      );
-      t.append(
-        $("<div>").html(
+          forecastConditions.DailyForecasts[i].Temperature.Maximum.Unit +
+          "/" +
           forecastConditions.DailyForecasts[i].Temperature.Minimum.Value +
-          forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit
-        )
+          forecastConditions.DailyForecasts[i].Temperature.Minimum.Unit +
+          "</p>"
       );
-      t.append(
-        $("<div>").html(forecastConditions.DailyForecasts[i].Day.IconPhrase)
-      );
-      $("#current-display").append(t);
+
+      var icon = $("<img>");
+      var iconNumber = forecastConditions.DailyForecasts[i].Day.Icon;
+      if (iconNumber < 10) {
+        iconNumber = "0" + forecastConditions.DailyForecasts[i].Day.Icon;
+      }
+      let imageUrl =
+        "https://developer.accuweather.com/sites/default/files/" +
+        iconNumber +
+        "-s.png";
+      icon.attr("src", imageUrl);
+
+      $("#temp-display" + i).prepend(icon);
+
+      $("#forecasted-display").append();
     }
   });
-
 }
 //Initial Values
 var name = "";
@@ -210,7 +217,7 @@ var email = "";
 var message = "";
 
 //Capture Button Click
-$("#contact-submit-btn").on("click", function (event) {
+$("#contact-submit-btn").on("click", function(event) {
   event.preventDefault();
   //Grabbed values from text-boxes
   name = $("#name-input")
@@ -227,7 +234,7 @@ $("#contact-submit-btn").on("click", function (event) {
     name: name,
     email: email,
     message: message
-  }
+  };
   //Code for Setting values in database
   database.ref().push(newContact);
   // Firebase watcher + initial loader
