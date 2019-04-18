@@ -54,18 +54,27 @@ function ajaxCall(url) {
     //can then be used by eventDisplay()
     console.log(response);
     $("#event-display").empty();
-    var paidEvents = response.events.filter(function(events) {response.events.is_free === true});
-    console.log(paidEvents)
     displayEvents(response);
   });
 }
+// variables to store selected input
 var cost = $("#how-much-input :selected").val();
 var local = $("#in-or-out-input :selected").val();
 var time = $("#what-time-input :selected").val();
 
+// 
 function filteredSearch(local, cost, time) {
   if(cost === "Free" && local === "Outdoors" && time === "PM") {
-  
+    i = 0;
+    while(i < 12){
+      var t = $("<tr>");
+      var eventUrl = response.events[i].url;
+      var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+      t.append(eventImg);
+      if(isFree(response.events[i]) === true && isIndoor(response.events[i] !== true)) {
+        t.append("Cost: FREE");
+        t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
+        $("#event-display").append(t);
   } else if (cost === "Free" && local === "Outdoors" && time === "AM"){
 
   } else if (cost === "Free" && local === "Indoors" && time === "AM") {
@@ -84,10 +93,14 @@ function filteredSearch(local, cost, time) {
   } else {
     
   }
-};
+}}};
 
 
 function displayEvents(response) {
+  // attempting to filter the response
+  filteredSearch (response);
+
+  // from here below is code from Wed night working w/ Aaron. 
   if ($("#how-much-input :selected").val() === "Free") {
     i = 0;
     while(i < 12) {
@@ -112,18 +125,33 @@ function displayEvents(response) {
       var eventUrl = response.events[i].url;
       var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
       t.append(eventImg);
+      if(isFree(response.events[i]) === true) {
+        t.append("Cost: FREE");
+        t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
+        $("#event-display").append(t);
+      } else {
       t.append("Cost: " + response.events[i].ticket_availability.minimum_ticket_price.major_value + " - " + response.events[i].ticket_availability.maximum_ticket_price.display)
       t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
       $("#event-display").append(t);
+    };
       i++;
     };
-  }
+  }}
 
 function isFree(response) {
     if(response.is_free === true) {
       return true;
     }
-
+};
+// trying to follow the lead Aaron gave me in building a function 
+// to know if the event is indoor/AM or PM
+function isIndoor(response) {
+  if (response.online_event === true) {
+    return true;
+  }
+};
+function timeOfEvent (response) {
+  i
 }
 
 function getLocationKey(weatherLocation) {
