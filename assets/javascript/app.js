@@ -118,21 +118,21 @@ function showCurrentConditions(key) {
     $("#current-display").html(
       currentConditions[0].Temperature.Imperial.Value +
         currentConditions[0].Temperature.Imperial.Unit +
-        " " +
+        " and " +
         currentConditions[0].WeatherText
     );
+   
     var icon = $("<img>");
-    var iconNumber = forecastConditions.DailyForecasts[i].Day.Icon;
+    var iconNumber = currentConditions[0].WeatherIcon;
     if (iconNumber < 10) {
-      iconNumber = "0" + forecastConditions.DailyForecasts[i].Day.Icon;
+      iconNumber = "0" + currentConditions[0].WeatherIcon;
     }
     let imageUrl =
       "https://developer.accuweather.com/sites/default/files/" +
       iconNumber +
       "-s.png";
     icon.attr("src", imageUrl);
-
-    $("#current-display" + i).prepend(icon);
+    $("#current-display").prepend(icon);
   });
 }
 function showForecast(key) {
