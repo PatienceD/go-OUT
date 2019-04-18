@@ -134,7 +134,7 @@ function showForecast(key) {
     method: "GET"
   }).then(function(forecastConditions) {
     console.log(forecastConditions);
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
       $("#temp-display" + i).html(
         "<p>" +
           forecastConditions.DailyForecasts[i].Temperature.Maximum.Value +
@@ -148,7 +148,7 @@ function showForecast(key) {
       var icon = $("<img>");
       var iconNumber = forecastConditions.DailyForecasts[i].Day.Icon;
       if (iconNumber < 10) {
-        iconNumber = "0" + i;
+        iconNumber = "0" + forecastConditions.DailyForecasts[i].Day.Icon;
       }
       let imageUrl =
         "https://developer.accuweather.com/sites/default/files/" +
