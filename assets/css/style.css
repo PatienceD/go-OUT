@@ -132,3 +132,6 @@ body {
     background-color: #555;
     /* Add a dark-grey background on hover */
 }
+#forcasted-display{
+    min-width: 9em;
+}
