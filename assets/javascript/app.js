@@ -32,11 +32,11 @@ $("#location-search").on("click", function(event) {
     myLocation +
     "&location.within=10mi&expand=external_ticketing,ticket_availability&token=S5ODNTLSPUBRNVOLMPSS";
   var weatherLocation =
-    "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=2QSqJXGVZVwwlziV0njAtYbbLZONsCTm&q=" +
+    "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj &q=" +
     myLocation;
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
-  getLocationKey(weatherLocation);
+  // getLocationKey(weatherLocation);
 
   // primary AccuWeather key A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH
   // secondary AccuWeather key 2QSqJXGVZVwwlziV0njAtYbbLZONsCTm
@@ -54,39 +54,104 @@ function ajaxCall(url) {
     //can then be used by eventDisplay()
     console.log(response);
     $("#event-display").empty();
+    displayEvents(response);
+  });
+}
+// variables to store selected input
+var cost = $("#how-much-input :selected").val();
+var local = $("#in-or-out-input :selected").val();
+var time = $("#what-time-input :selected").val();
 
-    for (var i = 0; i < 12; i++) {
+// 
+function filteredSearch(local, cost, time) {
+  if(cost === "Free" && local === "Outdoors" && time === "PM") {
+    i = 0;
+    while(i < 12){
+      var t = $("<tr>");
+      var eventUrl = response.events[i].url;
+      var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+      t.append(eventImg);
+      if(isFree(response.events[i]) === true && isIndoor(response.events[i] !== true)) {
+        t.append("Cost: FREE");
+        t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
+        $("#event-display").append(t);
+  } else if (cost === "Free" && local === "Outdoors" && time === "AM"){
+
+  } else if (cost === "Free" && local === "Indoors" && time === "AM") {
+
+  } else if (cost === "Free" && local === "Indoors" && time === "PM") {
+
+  } else if (cost === "$$$$" && local === "Outdoors" && time === "AM") {
+
+
+  } else if (cost === "$$$$" && local === "Outdoors" && time === "PM") {
+
+  } else if (cost === "$$$$" && local === "Indoors" && time === "AM") {
+
+  } else if (cost === "$$$$" && local === "Indoors" && time === "PM") {
+
+  } else {
+    
+  }
+}}};
+
+
+function displayEvents(response) {
+  // attempting to filter the response
+  filteredSearch (response);
+
+  // from here below is code from Wed night working w/ Aaron. 
+  if ($("#how-much-input :selected").val() === "Free") {
+    i = 0;
+    while(i < 12) {
       var t = $("<tr>");
       var eventUrl = response.events[i].url;
       var eventImg = $("<img>")
         .addClass("logo")
         .attr("src", response.events[i].logo.url);
       t.append(eventImg);
-      if (response.events[i].is_free === true) {
+      if(isFree(response.events[i]) === true) {
         t.append("Cost: FREE");
-      } else {
-        t.append(
-          "Cost: " +
-            response.events[i].ticket_availability.minimum_ticket_price
-              .major_value +
-            " - " +
-            response.events[i].ticket_availability.maximum_ticket_price.display
-        );
+        t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
+        $("#event-display").append(t);
       }
-      t.append(
-        $("<td>").html(
-          "<p1><a href= " +
-            eventUrl +
-            " target='_blank' >" +
-            response.events[i].name.text +
-            " </a>" +
-            response.events[i].summary +
-            "</p1><br><br><br>"
-        )
-      );
-      $("#event-display").prepend(t);
+      i++;
     }
-  });
+  }
+  else {
+    i = 0;
+    while(i < 12){
+      var t = $("<tr>");
+      var eventUrl = response.events[i].url;
+      var eventImg = $("<img>").addClass("logo").attr("src", response.events[i].logo.url);
+      t.append(eventImg);
+      if(isFree(response.events[i]) === true) {
+        t.append("Cost: FREE");
+        t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
+        $("#event-display").append(t);
+      } else {
+      t.append("Cost: " + response.events[i].ticket_availability.minimum_ticket_price.major_value + " - " + response.events[i].ticket_availability.maximum_ticket_price.display)
+      t.append($("<td>").html("<p1><a href= " + eventUrl + " target='_blank' >" + response.events[i].name.text + " </a>" + response.events[i].summary + "</p1><br><br><br>"));
+      $("#event-display").append(t);
+    };
+      i++;
+    };
+  }}
+
+function isFree(response) {
+    if(response.is_free === true) {
+      return true;
+    }
+};
+// trying to follow the lead Aaron gave me in building a function 
+// to know if the event is indoor/AM or PM
+function isIndoor(response) {
+  if (response.online_event === true) {
+    return true;
+  }
+};
+function timeOfEvent (response) {
+  i
 }
 
 function getLocationKey(weatherLocation) {
@@ -108,7 +173,7 @@ function showCurrentConditions(key) {
   var queryUrl =
     "http://dataservice.accuweather.com/currentconditions/v1/" +
     key +
-    "?apikey=2QSqJXGVZVwwlziV0njAtYbbLZONsCTm&details=true";
+    "?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj &details=true";
   console.log(queryUrl);
   $.ajax({
     url: queryUrl,
@@ -118,23 +183,35 @@ function showCurrentConditions(key) {
     $("#current-display").html(
       currentConditions[0].Temperature.Imperial.Value +
         currentConditions[0].Temperature.Imperial.Unit +
-        " " +
+        " and " +
         currentConditions[0].WeatherText
     );
+   
+    var icon = $("<img>");
+    var iconNumber = currentConditions[0].WeatherIcon;
+    if (iconNumber < 10) {
+      iconNumber = "0" + currentConditions[0].WeatherIcon;
+    }
+    let imageUrl =
+      "https://developer.accuweather.com/sites/default/files/" +
+      iconNumber +
+      "-s.png";
+    icon.attr("src", imageUrl);
+    $("#current-display").prepend(icon);
   });
 }
 function showForecast(key) {
   var queryUrl =
     "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
     key +
-    "?apikey=2QSqJXGVZVwwlziV0njAtYbbLZONsCTm&details=true";
+    "?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj&details=true";
   console.log(queryUrl);
   $.ajax({
     url: queryUrl,
     method: "GET"
   }).then(function(forecastConditions) {
     console.log(forecastConditions);
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
       $("#temp-display" + i).html(
         "<p>" +
           forecastConditions.DailyForecasts[i].Temperature.Maximum.Value +
@@ -148,7 +225,7 @@ function showForecast(key) {
       var icon = $("<img>");
       var iconNumber = forecastConditions.DailyForecasts[i].Day.Icon;
       if (iconNumber < 10) {
-        iconNumber = "0" + i;
+        iconNumber = "0" + forecastConditions.DailyForecasts[i].Day.Icon;
       }
       let imageUrl =
         "https://developer.accuweather.com/sites/default/files/" +
