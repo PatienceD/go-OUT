@@ -233,7 +233,7 @@ function showForecast(key) {
         "-s.png";
       icon.attr("src", imageUrl);
 
-      $("#icon" + i).prepend(icon);
+      $("#icon" + i).html(icon);
 
       $("#forecasted-display").append();
 
@@ -244,7 +244,7 @@ function showForecast(key) {
       console.log(dateFormat);
      console.log(convertedDate);
     console.log(convertedDate.format("dddd"));
-    $("#day-of-week" + i).prepend(convertedDate.format("dddd"));
+    $("#day-of-week" + i).html(convertedDate.format("dddd"));
     }
   });
 }
