@@ -36,7 +36,7 @@ $("#location-search").on("click", function(event) {
     myLocation;
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
-  // getLocationKey(weatherLocation);
+  getLocationKey(weatherLocation);
 
   // primary AccuWeather key A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH
   // secondary AccuWeather key 2QSqJXGVZVwwlziV0njAtYbbLZONsCTm
@@ -233,12 +233,22 @@ function showForecast(key) {
         "-s.png";
       icon.attr("src", imageUrl);
 
-      $("#temp-display" + i).prepend(icon);
+      $("#icon" + i).html(icon);
 
       $("#forecasted-display").append();
+
+      var date = forecastConditions.DailyForecasts[i].Date;
+      var dateFormat = "YYYY-MM-DDTHH:mm:ssZ";
+      var convertedDate = moment(date,dateFormat);
+      console.log(date);
+      console.log(dateFormat);
+     console.log(convertedDate);
+    console.log(convertedDate.format("dddd"));
+    $("#day-of-week" + i).html(convertedDate.format("dddd"));
     }
   });
 }
+//This starts firebase stuff
 //Initial Values
 var name = "";
 var email = "";
