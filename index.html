@@ -17,6 +17,9 @@
 </head>
 
 <body class="slider">
+    <!-- Moment -->
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     <div class="load">
         <div class="header">
@@ -151,11 +154,33 @@
                         </div>
                         <div class="card-body" id="forecasted-display">
                             <div class="row">
-                                <div class="col" id="temp-display0"></div>
-                                <div class="col" id="temp-display1"></div>
-                                <div class="col" id="temp-display2"></div>
-                                <div class="col" id="temp-display3"></div>
-                                <div class="col" id="temp-display4"></div>
+                                <div class="col">
+                                <div class="row" id="day-of-week0"></div>
+                                <div class="row" id="icon0"></div>
+                                <div class="row" id="temp-display0"></div>
+                                </div>
+                                <div class="col">
+                                        <div class="row" id="day-of-week1"></div>
+                                        <div class="row" id="icon1"></div>
+                                        <div class="row" id="temp-display1"></div>
+                                </div>
+                                <div class="col">
+                                        <div class="row" id="day-of-week2"></div>
+                                        <div class="row" id="icon2"></div>
+                                        <div class="row" id="temp-display2"></div>
+
+                                </div> 
+                                <div class="col">
+                                        <div class="row" id="day-of-week3"></div>
+                                        <div class="row" id="icon3"></div>
+                                        <div class="row" id="temp-display3"></div>
+
+                                </div>
+                                <div class="col">
+                                        <div class="row" id="day-of-week4"></div>
+                                        <div class="row" id="icon4"></div>
+                                        <div class="row" id="temp-display4"></div>
+                                </div> 
                             </div>
                         </div>
                     </div>
