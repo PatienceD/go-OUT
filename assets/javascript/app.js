@@ -32,7 +32,7 @@ $("#location-search").on("click", function(event) {
     myLocation +
     "&location.within=10mi&expand=external_ticketing,ticket_availability&token=S5ODNTLSPUBRNVOLMPSS";
   var weatherLocation =
-    "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj &q=" +
+    "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=A9IYPehiyBlSicaf0AMQF9lZsMQMnLnH &q=" +
     myLocation;
   ajaxCall(eventbriteURL);
   console.log(eventbriteURL);
