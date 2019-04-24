@@ -153,7 +153,7 @@ function isIndoor(response) {
 function timeOfEvent (response) {
   i
 }
-
+//start weather display
 function getLocationKey(weatherLocation) {
   console.log("ajaxCall2...");
   $.ajax({
@@ -173,7 +173,7 @@ function showCurrentConditions(key) {
   var queryUrl =
     "http://dataservice.accuweather.com/currentconditions/v1/" +
     key +
-    "?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj &details=true";
+    "?apikey=CcCG2hUBsdGosoMYp4UTzeMLh0VHSgsj&details=true";
   console.log(queryUrl);
   $.ajax({
     url: queryUrl,
