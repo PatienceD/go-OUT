@@ -153,7 +153,7 @@ function isIndoor(response) {
 function timeOfEvent (response) {
   i
 }
-
+//start weather display
 function getLocationKey(weatherLocation) {
   console.log("ajaxCall2...");
   $.ajax({
